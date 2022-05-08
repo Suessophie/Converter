@@ -1,0 +1,46 @@
+<app-header [currencyUsd]="currencyUsd" [currencyEur]="currencyEur">
+</app-header>
+<main>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <h1 class="text-center mb-4">Currency Converter</h1>
+                <div *ngIf="currencies.length">
+                    <div *ngIf="invalid" class="alert alert-danger">
+                        Enter the correct format.
+                    </div>
+                    <div class="form-group row mb-3">
+                        <div class="col-6">
+                            <input class="form-control" type="text" [(ngModel)]="value1" #input1="ngModel"
+                                (ngModelChange)="handlerInput($event, 'top')" />
+                        </div>
+                        <div class="col-6">
+                            <select class="form-control" [(ngModel)]="value2" #select2="ngModel"
+                                (ngModelChange)="handlerSelect($event, 'top')">
+                                <option *ngFor="let item of currencies" [value]="item[1]"
+                                    [selected]="item[0] === initialSelect1">
+                                    {{ item[0] }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-3">
+                        <div class="col-6">
+                            <input class="form-control" type="text" [(ngModel)]="value3" #input3="ngModel"
+                                (ngModelChange)="handlerInput($event, 'bottom')" />
+                        </div>
+                        <div class="col-6">
+                            <select class="form-control" [(ngModel)]="value4" #select4="ngModel"
+                                (ngModelChange)="handlerSelect($event, 'bottom')">
+                                <option *ngFor="let item of currencies" [value]="item[1]"
+                                    [selected]="item[0] === initialSelect2">
+                                    {{ item[0] }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
